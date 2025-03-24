@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import myImage from "../Images/logo.jpg";
+import "../index.css";
 import "./LoginSignup.css";
 
-const LoginSignup = () => {
+const LoginSignup = ({ onLogin }) => {
+  const [email, setEmail] = useState("");
+
+  const handleLogin = () => {
+    if (email.trim()) {
+      alert(`Welcome to the Faculty Portal Dashboard!\nYou have successfully logged in.`);
+      onLogin(); // Call the login function
+    } else {
+      alert("Please enter a valid email to continue.");
+    }
+  };
+
   return (
     <div className="right-section">
       <h2 className="login-title">Welcome Back!</h2>
@@ -10,37 +24,49 @@ const LoginSignup = () => {
       </p>
 
       <div className="form-container">
-        <input type="email" placeholder="Email" className="input-field" />
+        <input 
+          type="email" 
+          placeholder="Email" 
+          className="input-field"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
         <input type="password" placeholder="Password" className="input-field" />
-        <button className="login-btn">
+        <button className="login-btn" onClick={handleLogin}>
           <span>🔑</span> <span>Sign In</span>
         </button>
         <p className="forgot-password">
           <a href="#" className="link">Forgot Password?</a>
         </p>
       </div>
-
-      <div className="sample-credentials">
-        <h3 className="credentials-title">Login Credentials</h3>
-        <div className="button-group">
-          <button className="sample-btn">Login as Instructor</button>
-          <button className="sample-btn">Login as Administrator</button>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="footer">
-        <p>
-          By using this site, you indicate your acceptance of our 
-          <a href="#" className="link"> Privacy Policy</a> and 
-          <a href="#" className="link"> Terms & Conditions</a>.
-        </p>
-        <p className="help-text">
-          Need Help? <a href="#" className="link">Contact Our Support Team</a>
-        </p>
-      </div>
     </div>
   );
 };
 
-export default LoginSignup;
+const Login = () => {
+  const navigate = useNavigate();
+
+  const handleLoginSuccess = () => {
+    navigate("/"); // Redirect to dashboard after login
+  };
+
+  return (
+    <div className="container">
+      <div className="left-section">
+        <div className="header">
+          <img src={myImage} alt="Faculty Portal Logo" className="logo" />
+          <h1 className="title">FACULTY PORTAL</h1>
+        </div>
+        <h2 className="welcome-text">Welcome to FACULTY PORTAL</h2>
+        <p className="description">
+          <span className="highlight">Database helps</span> developers to build
+          organized and well-coded <span className="highlight">dashboards full </span>
+          of beautiful and rich modules. Join us and start building your application today.
+        </p>
+      </div>
+      <LoginSignup onLogin={handleLoginSuccess} />
+    </div>
+  );
+};
+
+export default Login;
