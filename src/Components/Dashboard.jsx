@@ -22,7 +22,9 @@ const Dashboard = () => {
           <li onClick={() => navigate("/employee")} style={{ cursor: "pointer" }}>
             Employee
           </li>
-          <li>Recruitment</li>
+          <li onClick={() => navigate("/recruitment")} style={{ cursor: "pointer" }}>
+            Recruitment
+          </li>
           <li>Attendance</li>
           <li>Payroll</li>
           <li>Performance</li>
