@@ -288,3 +288,9 @@
     background-color: #0056b3;
   }
   
+  .menu li.active {
+    background-color: #0056b3;
+    color: white;
+    font-weight: bold;
+  }
+  

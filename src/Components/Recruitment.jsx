@@ -1,11 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { FaUserCircle, FaSearch, FaBell, FaCog } from "react-icons/fa";
 import recruitmentData from "../Data/RecruitmentData"; 
 import "../Styles/DashBoard.css";
 
 const Recruitment = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <div className="dashboard-container">
@@ -13,37 +14,85 @@ const Recruitment = () => {
       <aside className="sidebar">
         <h2 className="logo">Employee Management</h2>
         <ul className="menu">
-          <li onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
+          <li 
+            className={location.pathname === "/" ? "active" : ""}
+            onClick={() => navigate("/")} 
+            style={{ cursor: "pointer" }}
+          >
             Dashboard
           </li>
-          <li onClick={() => navigate("/employee")} style={{ cursor: "pointer" }}>
+          <li 
+            className={location.pathname === "/employee" ? "active" : ""}
+            onClick={() => navigate("/employee")} 
+            style={{ cursor: "pointer" }}
+          >
             Employee
           </li>
-          <li onClick={() => navigate("/recruitment")} style={{ cursor: "pointer" }}>
+          <li 
+            className={location.pathname === "/recruitment" ? "active" : ""}
+            onClick={() => navigate("/recruitment")} 
+            style={{ cursor: "pointer" }}
+          >
             Recruitment
           </li>
-          <li onClick={() => navigate("/attendance")} style={{ cursor: "pointer" }}>
+          <li 
+            className={location.pathname === "/attendance" ? "active" : ""}
+            onClick={() => navigate("/attendance")} 
+            style={{ cursor: "pointer" }}
+          >
             Attendance
           </li>
-          <li onClick={() => navigate("/payroll")} style={{ cursor: "pointer" }}>
+          <li 
+            className={location.pathname === "/payroll" ? "active" : ""}
+            onClick={() => navigate("/payroll")} 
+            style={{ cursor: "pointer" }}
+          >
             Payroll
           </li>
-          <li onClick={() => navigate("/performance")} style={{ cursor: "pointer" }}>
+          <li 
+            className={location.pathname === "/performance" ? "active" : ""}
+            onClick={() => navigate("/performance")} 
+            style={{ cursor: "pointer" }}
+          >
             Performance
           </li>
-          <li onClick={() => navigate("/communication")} style={{ cursor: "pointer" }}>
+          <li 
+            className={location.pathname === "/communication" ? "active" : ""}
+            onClick={() => navigate("/communication")} 
+            style={{ cursor: "pointer" }}
+          >
             Communication <span className="notification">2</span>
           </li>
-          <li onClick={() => navigate("/announcement")} style={{ cursor: "pointer" }}>
+          <li 
+            className={location.pathname === "/announcement" ? "active" : ""}
+            onClick={() => navigate("/announcement")} 
+            style={{ cursor: "pointer" }}
+          >
             Announcement <span className="notification">1</span>
           </li>
-          <li onClick={() => navigate("/documents")} style={{ cursor: "pointer" }}>
+          <li 
+            className={location.pathname === "/documents" ? "active" : ""}
+            onClick={() => navigate("/documents")} 
+            style={{ cursor: "pointer" }}
+          >
             Documents & Files
           </li>
         </ul>
         <div className="sidebar-footer">
-          <p onClick={() => navigate("/help")} style={{ cursor: "pointer" }}>Help Center</p>
-          <p onClick={() => navigate("/settings")} style={{ cursor: "pointer" }}>Settings</p>
+          <p 
+            className={location.pathname === "/help" ? "active" : ""}
+            onClick={() => navigate("/help")} 
+            style={{ cursor: "pointer" }}
+          >
+            Help Center
+          </p>
+          <p 
+            className={location.pathname === "/settings" ? "active" : ""}
+            onClick={() => navigate("/settings")} 
+            style={{ cursor: "pointer" }}
+          >
+            Settings
+          </p>
         </div>
       </aside>
 
