@@ -16,25 +16,23 @@ const Dashboard = () => {
       <aside className="sidebar">
         <h2 className="logo">Employee Management</h2>
         <ul className="menu">
-          <li onClick={() => navigate("/")} style={{ cursor: "pointer" }} className="active">
-            Dashboard
+          <li onClick={() => navigate("/")} className="nav-item active">Dashboard</li>
+          <li onClick={() => navigate("/employee")} className="nav-item">Employee</li>
+          <li onClick={() => navigate("/recruitment")} className="nav-item">Recruitment</li>
+          <li onClick={() => navigate("/attendance")} className="nav-item">Attendance</li>
+          <li onClick={() => navigate("/payroll")} className="nav-item">Payroll</li>
+          <li onClick={() => navigate("/performance")} className="nav-item">Performance</li>
+          <li onClick={() => navigate("/communication")} className="nav-item">
+            Communication <span className="notification">2</span>
           </li>
-          <li onClick={() => navigate("/employee")} style={{ cursor: "pointer" }}>
-            Employee
+          <li onClick={() => navigate("/announcement")} className="nav-item">
+            Announcement <span className="notification">1</span>
           </li>
-          <li onClick={() => navigate("/recruitment")} style={{ cursor: "pointer" }}>
-            Recruitment
-          </li>
-          <li>Attendance</li>
-          <li>Payroll</li>
-          <li>Performance</li>
-          <li>Communication <span className="notification">2</span></li>
-          <li>Announcement <span className="notification">1</span></li>
-          <li>Documents & Files</li>
+          <li onClick={() => navigate("/documents")} className="nav-item">Documents & Files</li>
         </ul>
         <div className="sidebar-footer">
-          <p>Help Center</p>
-          <p>Settings</p>
+          <p onClick={() => navigate("/help-center")} className="nav-item">Help Center</p>
+          <p onClick={() => navigate("/settings")} className="nav-item">Settings</p>
         </div>
       </aside>
 
@@ -94,7 +92,7 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              <tr onClick={() => handleEmployeeClick("Pristia Candra")} style={{ cursor: "pointer" }}>
+              <tr onClick={() => handleEmployeeClick("Pristia Candra")} className="clickable-row">
                 <td>Pristia Candra</td>
                 <td>9.00 am to 5 pm</td>
                 <td>8hr</td>
@@ -102,7 +100,7 @@ const Dashboard = () => {
                 <td>8hr</td>
                 <td>30 min</td>
               </tr>
-              <tr onClick={() => handleEmployeeClick("Rahim Earteza")} style={{ cursor: "pointer" }}>
+              <tr onClick={() => handleEmployeeClick("Rahim Earteza")} className="clickable-row">
                 <td>Rahim Earteza</td>
                 <td>9.00 am to 5 pm</td>
                 <td>8hr</td>

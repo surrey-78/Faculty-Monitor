@@ -19,7 +19,7 @@ const Recruitment = () => {
           <li onClick={() => navigate("/employee")} style={{ cursor: "pointer" }}>
             Employee
           </li>
-          <li className="active" onClick={() => navigate("/recruitment")}>
+          <li onClick={() => navigate("/recruitment")} style={{ cursor: "pointer" }}>
             Recruitment
           </li>
           <li onClick={() => navigate("/attendance")} style={{ cursor: "pointer" }}>

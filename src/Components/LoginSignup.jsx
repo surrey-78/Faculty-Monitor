@@ -1,16 +1,23 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import myImage from "../Images/logo.jpg";
 import "../index.css";
 import "../Styles/LoginSignup.css";
 
 const LoginSignup = ({ onLogin }) => {
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation(); // Get current location
 
   const handleLogin = () => {
     if (email.trim()) {
       alert(`Welcome to the Faculty Portal Dashboard!\nYou have successfully logged in.`);
       onLogin(); // Call the login function
+
+      // Retrieve last visited page from sessionStorage
+      const lastPage = sessionStorage.getItem("lastPage") || "/";
+      navigate(lastPage); // Redirect to the last requested page
+      sessionStorage.removeItem("lastPage"); // Clear after redirecting
     } else {
       alert("Please enter a valid email to continue.");
     }
@@ -47,7 +54,9 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLoginSuccess = () => {
-    navigate("/"); // Redirect to dashboard after login
+    // Retrieve last page from sessionStorage or default to dashboard
+    const lastPage = sessionStorage.getItem("lastPage") || "/";
+    navigate(lastPage); 
   };
 
   return (

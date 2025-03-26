@@ -8,7 +8,7 @@ const EmployeeDetail = () => {
   const { employeeName } = useParams();
   const navigate = useNavigate();
 
-  // Find the employee based on the name from URL params
+  // Find the employee based on URL param
   const employee = employees.find(emp => emp.name === employeeName);
 
   if (!employee) {
@@ -21,23 +21,23 @@ const EmployeeDetail = () => {
       <aside className="sidebar">
         <h2 className="logo">Employee Management</h2>
         <ul className="menu">
-          <li onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
-            Dashboard
+          <li onClick={() => navigate("/")} className="nav-item">Dashboard</li>
+          <li onClick={() => navigate("/employee")} className="nav-item active">Employee</li>
+          <li onClick={() => navigate("/recruitment")} className="nav-item">Recruitment</li>
+          <li onClick={() => navigate("/attendance")} className="nav-item">Attendance</li>
+          <li onClick={() => navigate("/payroll")} className="nav-item">Payroll</li>
+          <li onClick={() => navigate("/performance")} className="nav-item">Performance</li>
+          <li onClick={() => navigate("/communication")} className="nav-item">
+            Communication <span className="notification">2</span>
           </li>
-          <li onClick={() => navigate("/employee")} style={{ cursor: "pointer" }} className="active">
-            Employee
+          <li onClick={() => navigate("/announcement")} className="nav-item">
+            Announcement <span className="notification">1</span>
           </li>
-          <li>Recruitment</li>
-          <li>Attendance</li>
-          <li>Payroll</li>
-          <li>Performance</li>
-          <li>Communication <span className="notification">2</span></li>
-          <li>Announcement <span className="notification">1</span></li>
-          <li>Documents & Files</li>
+          <li onClick={() => navigate("/documents")} className="nav-item">Documents & Files</li>
         </ul>
         <div className="sidebar-footer">
-          <p>Help Center</p>
-          <p>Settings</p>
+          <p onClick={() => navigate("/help-center")} className="nav-item">Help Center</p>
+          <p onClick={() => navigate("/settings")} className="nav-item">Settings</p>
         </div>
       </aside>
 
