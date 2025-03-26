@@ -1,18 +1,29 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { FaUserCircle, FaSearch, FaBell, FaCog } from "react-icons/fa";
-import "./Dashboard.css";
+import "../Styles/DashBoard.css";
 
 const Dashboard = () => {
+  const navigate = useNavigate(); // Initialize navigate function
+
+  const handleEmployeeClick = (employeeName) => {
+    navigate(`/employee/${employeeName}`);
+  };
+
   return (
     <div className="dashboard-container">
       {/* Sidebar */}
       <aside className="sidebar">
-        <h2 className="logo">ADVANCE Employee Management</h2>
+        <h2 className="logo">Employee Management</h2>
         <ul className="menu">
-          <li>Dashboard</li>
-          <li>Employee</li>
+          <li onClick={() => navigate("/")} style={{ cursor: "pointer" }} className="active">
+            Dashboard
+          </li>
+          <li onClick={() => navigate("/employee")} style={{ cursor: "pointer" }}>
+            Employee
+          </li>
           <li>Recruitment</li>
-          <li className="active">Attendance</li>
+          <li>Attendance</li>
           <li>Payroll</li>
           <li>Performance</li>
           <li>Communication <span className="notification">2</span></li>
@@ -81,7 +92,7 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr onClick={() => handleEmployeeClick("Pristia Candra")} style={{ cursor: "pointer" }}>
                 <td>Pristia Candra</td>
                 <td>9.00 am to 5 pm</td>
                 <td>8hr</td>
@@ -89,7 +100,7 @@ const Dashboard = () => {
                 <td>8hr</td>
                 <td>30 min</td>
               </tr>
-              <tr>
+              <tr onClick={() => handleEmployeeClick("Rahim Earteza")} style={{ cursor: "pointer" }}>
                 <td>Rahim Earteza</td>
                 <td>9.00 am to 5 pm</td>
                 <td>8hr</td>
@@ -97,7 +108,6 @@ const Dashboard = () => {
                 <td>8hr</td>
                 <td>2hr</td>
               </tr>
-              {/* Add more rows as needed */}
             </tbody>
           </table>
         </section>
