@@ -1,10 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUserCircle, FaSearch, FaBell, FaCog } from "react-icons/fa";
+import attendanceData from "../Data/Employees"; // Import attendance data
 import "../Styles/DashBoard.css";
 
 const Dashboard = () => {
-  const navigate = useNavigate(); // Initialize navigate function
+  const navigate = useNavigate(); 
 
   const handleEmployeeClick = (employeeName) => {
     navigate(`/employee/${employeeName}`);
@@ -12,7 +13,6 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      {/* Sidebar */}
       <aside className="sidebar">
         <h2 className="logo">Employee Management</h2>
         <ul className="menu">
@@ -36,9 +36,7 @@ const Dashboard = () => {
         </div>
       </aside>
 
-      {/* Main Content */}
       <main className="main-content">
-        {/* Top Bar */}
         <header className="topbar">
           <div className="search-bar">
             <FaSearch className="icon" />
@@ -51,7 +49,6 @@ const Dashboard = () => {
           </div>
         </header>
 
-        {/* Attendance Summary */}
         <section className="attendance-summary">
           <div className="summary-card">
             <h3>Present Summary</h3>
@@ -71,7 +68,6 @@ const Dashboard = () => {
           </div>
         </section>
 
-        {/* Attendance Table */}
         <section className="attendance-table">
           <div className="table-header">
             <h3>Attendance</h3>
@@ -92,22 +88,16 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              <tr onClick={() => handleEmployeeClick("Pristia Candra")} className="clickable-row">
-                <td>Pristia Candra</td>
-                <td>9.00 am to 5 pm</td>
-                <td>8hr</td>
-                <td>Mirpur, Dhaka</td>
-                <td>8hr</td>
-                <td>30 min</td>
-              </tr>
-              <tr onClick={() => handleEmployeeClick("Rahim Earteza")} className="clickable-row">
-                <td>Rahim Earteza</td>
-                <td>9.00 am to 5 pm</td>
-                <td>8hr</td>
-                <td>Mirpur, Dhaka</td>
-                <td>8hr</td>
-                <td>2hr</td>
-              </tr>
+              {attendanceData.map((employee, index) => (
+                <tr key={index} onClick={() => handleEmployeeClick(employee.name)} className="clickable-row">
+                  <td>{employee.name}</td>
+                  <td>{employee.clockInOut}</td>
+                  <td>{employee.workSchedule}</td>
+                  <td>{employee.clockLocation}</td>
+                  <td>{employee.paidTime}</td>
+                  <td>{employee.overtime}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </section>
