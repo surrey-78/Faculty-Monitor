@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import myImage from "../Images/logo.jpg";
+import myImage from "/logo.jpg";
 import "../index.css";
 import "../Styles/LoginSignup.css";
 

@@ -10,7 +10,7 @@ body {
   
 .left-section {
     width: 50%;
-    background-image: url("../Images/bg.jpg");
+    background-image: url("/bg.jpg");
     color: white;
     display: flex;
     flex-direction: column;
